@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev1": "nodemon ./src/server.ts"
   },
   "dependencies": {
+    "@typegoose/typegoose": "^10.3.3",
     "bcrypt": "^5.1.0",
     "config": "^3.3.9",
     "cors": "^2.8.5",
@@ -17,6 +19,7 @@
     "jsonwebtoken": "^9.0.0",
     "loadsh": "^0.0.4",
     "mongoose": "^7.0.2",
+    "morgan": "^1.10.0",
     "nanoid": "^4.0.1",
     "pino": "^8.11.0",
     "pino-pretty": "^10.0.0",
@@ -33,7 +36,7 @@
     "@types/http-errors": "^2.0.1",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/lodash": "^4.14.191",
-    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.4",
     "@types/nanoid": "^3.0.0",
     "@types/node": "^18.15.3",
     "@types/pino": "^7.0.5",

@@ -1,38 +1,11 @@
-import mongoose from "mongoose";
-import { compare, genSalt, hash } from "bcrypt"
-import config from "config"
-import { User } from "../types/user.types";
-interface UserDocument extends Omit<User,"rePassword">,mongoose.Document{}
-const userSchema = new mongoose.Schema<UserDocument>({
-
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true,
-    }
-    }, {timestamps: true}
-)
-userSchema.pre("save",async function(next){
-    let  user= this as unknown as UserDocument
-    if(!user.isModified("password")){
-        return next()
-    }
-const salt=await  genSalt(config.get<number>('saltWorkFactor') )
-const hashPassword= await hash(user.password,salt);
-user.password=hashPassword;
-return next();
-
-})
-userSchema.methods.comparePassword=async function (password:string):Promise<boolean> {
-const user=this as unknown as UserDocument
-return compare(password, user.password).catch(e=>false)
+import { getModelForClass, prop } from "@typegoose/typegoose"
+import { User as IUser } from "../types"
+class User  implements IUser{
+ @prop({required:[true,"email is required"],unique:true})
+ email:string
+ @prop({required:[true,"name is required"]})
+ name:string
+@prop({required:[true,"password is required"],min:[8,"password must have minimum 8 characters"]})
+ password:string
 }
-export const UserModel = mongoose.model("User", userSchema)
+export const UserModel=getModelForClass(User)
