@@ -4,7 +4,8 @@ export const logger=pino({
         target:"pino-pretty",
         options:{
             translateTime:"SYS:yyyy-mm-dd'T'HH:MM:ss",
-            ignore:"pid,hostname"
+            ignore:"pid,hostname",
+
         }
     }
 })

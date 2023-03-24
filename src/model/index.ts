@@ -1,2 +1,3 @@
-export { UserModel } from "./user.mongo";
-export type { UserDocument } from "./user.mongo";
+export { SessionModel } from "./session.model";
+export { UserModel } from "./user.model";
+export type { SessionSchemaType, SessionType } from "./session.model";

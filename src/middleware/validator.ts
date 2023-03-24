@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AnyZodObject} from "zod";
-import { logger } from "../utils";
+import { AnyZodObject, ZodError} from "zod";
 export const validate=(schema:AnyZodObject)=>async (req:Request,res:Response,next:NextFunction)=>{
 try {
  await schema.parseAsync({
@@ -10,7 +9,9 @@ try {
 })
 next()
 } catch (e:any) {
-    logger.info("jo")
+if(e instanceof ZodError){
+
 return res.status(500).json(e.errors)
+}
 }
 }
