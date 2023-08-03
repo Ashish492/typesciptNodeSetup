@@ -1,4 +1,5 @@
 import { isValidObjectId } from 'mongoose'
+// eslint-disable-next-line import/named
 import { TypeOf, z } from 'zod'
 const sessionSchema = z.object({
   userAgent: z.string(),
@@ -8,7 +9,7 @@ const sessionRequestBodySchema = z.object({
   email: z.string({ required_error: 'email is required' }),
   password: z.string({ required_error: 'password is required' }),
 })
-export type sessionRequestBody = TypeOf<typeof sessionRequestBodySchema>
+export type SessionRequestBody = TypeOf<typeof sessionRequestBodySchema>
 export const sessionRequestSchema = z.object({ body: sessionRequestBodySchema })
 export type Session = TypeOf<typeof sessionSchema>
 export type JWTPayload = {

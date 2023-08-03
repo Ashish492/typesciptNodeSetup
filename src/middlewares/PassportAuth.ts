@@ -2,7 +2,7 @@ import createHttpError from 'http-errors'
 import passport from 'passport'
 import { Strategy, StrategyOptions, ExtractJwt } from 'passport-jwt'
 import config from 'config'
-import { SessionModel } from '../model'
+import { SessionModel } from '../models'
 import { JWTPayload } from '../types'
 const options: StrategyOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

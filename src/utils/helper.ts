@@ -17,7 +17,7 @@ export function customRouteFunction<B, P extends core.ParamsDictionary, Q extend
 }
 export const runService = async <T>(fn: (...args: any[]) => T, msg?: string): Promise<T | void> => {
   try {
-    return await fn()
+    return fn()
   } catch (error) {
     throw createHttpError(500, msg ?? 'internal server Error', { cause: error })
   }

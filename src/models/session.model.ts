@@ -1,5 +1,5 @@
 import { DocumentType, Ref, getModelForClass, modelOptions, prop, setGlobalOptions } from '@typegoose/typegoose'
-import { User } from './user.model'
+import { User } from '@models/user.model'
 import { Schema } from 'mongoose'
 setGlobalOptions({
   schemaOptions: {
@@ -10,8 +10,10 @@ setGlobalOptions({
 class Session {
   @prop({ ref: User, required: true })
   user: Ref<User>
+
   @prop({ default: true, required: true })
   valid: boolean
+
   @prop({ required: true })
   userAgent: string
 }

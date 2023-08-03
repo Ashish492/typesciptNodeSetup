@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { auth, validate } from '../middleware'
-import { sessionRequestSchema } from '../types'
-import { customRouteFunction } from '../utils'
-import { createSessionHandler, deleteSessionHandler, getSessionHandler, issueToken } from '../controller'
+import { sessionRequestSchema } from '@types'
+import { createSessionHandler, deleteSessionHandler, getSessionHandler, issueToken } from '@controllers'
+import { customRouteFunction } from '@utils'
+import { auth, validate } from '@middlewares'
 export const sessionRouter = Router()
 sessionRouter
   .route('/')

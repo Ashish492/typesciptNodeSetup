@@ -4,9 +4,9 @@ import cors from 'cors'
 import { ZodError } from 'zod'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
-import routes from './routes'
-import { initializePassport } from './middleware'
-import { logger } from './utils'
+import routes from 'routes'
+import { initializePassport } from '@middlewares'
+import { logger } from '@utils/index'
 const app: Application = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -15,7 +15,7 @@ app.use(morgan('dev'))
 app.use(helmet())
 app.use(cors())
 app.use(initializePassport())
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   logger.error(err)
   if (err instanceof ZodError) {
     res.status(400)

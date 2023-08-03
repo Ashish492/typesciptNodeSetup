@@ -4,7 +4,7 @@ import path from 'path'
 import config from 'config'
 import { JWTPayload } from '../types'
 export const signJWT = async (object: Object, options?: jwt.SignOptions) => {
-  return await jwt.sign(object, config.get<string>('privateKey'), {
+  return jwt.sign(object, config.get<string>('privateKey'), {
     ...options,
     algorithm: 'RS256',
   })

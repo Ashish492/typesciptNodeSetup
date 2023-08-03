@@ -1,25 +1,22 @@
-import config from "config"
-import { connectToDB } from "./utils";
-import http from "http"
-import app from "./app";
-import { logger } from "./utils/logger";
+// import 'tsconfig-paths/register'
+// import 'module-alias/register'
+import config from 'config'
+import http from 'http'
+import app from './app'
+import { logger } from '@utils/logger'
 const start = async () => {
-const PORT=config.get<number>("port");
-try {
-    await connectToDB()
-    const server=http.createServer(app)
-    server.listen(PORT,() =>{logger.info(`server running on http://localhost:${PORT}`)
-
-}
-    )
-} catch (error) {
-    console.log("unable  to connect  to database")
-}
-
+  const PORT = config.get<number>('port')
+  try {
+    // await connectToDB()
+    const server = http.createServer(app)
+    server.listen(PORT, () => {
+      logger.info(`server running on http://localhost:${PORT}`)
+    })
+  } catch (error) {
+    logger.error(error)
+  }
 }
 start()
-
-
 // uncomment to use cluster
 // if (cluster.isPrimary) {
 //   for (let i = 0; i < os.cpus().length; i++) {
@@ -31,8 +28,6 @@ start()
 //     cluster.fork()
 //   })
 // } else {
-
 // start()
-
 //   )
 // }

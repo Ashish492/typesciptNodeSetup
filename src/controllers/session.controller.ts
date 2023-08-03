@@ -1,5 +1,5 @@
 import createHttpError from 'http-errors'
-import { createSession, findSession, invalidSession, validatePassword } from '../service'
+import { createSession, findSession, invalidSession, validatePassword } from '../services'
 import { CustomRouteFunction, JWTPayload, sessionRequestBody } from '../types'
 import { signJWT, verifyJwt } from '../utils'
 import config from 'config'
