@@ -8,11 +8,9 @@
     "dev1": "nodemon ./src/server.ts"
   },
   "dependencies": {
-    "-": "^0.0.1",
-    "@typegoose/typegoose": "^10.3.3",
+    "@typegoose/typegoose": "^11.4.1",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "D": "^1.0.0",
     "bcrypt": "^5.1.0",
     "config": "^3.3.9",
     "cookie-parser": "^1.4.6",
@@ -26,7 +24,6 @@
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.0",
     "loadsh": "^0.0.4",
-    "mongoose": "^7.0.2",
     "morgan": "^1.10.0",
     "nanoid": "^4.0.1",
     "passport": "^0.6.0",
